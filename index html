@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amulu's Birthday Surprise World 🎂</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --pink: #ff78ad;
+  --purple: #9475ff;
+  --yellow: #ffda75;
+  --dark: #30264b;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--dark);
+  background: linear-gradient(135deg, #fff0f6, #eeeaff, #e5faff);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+}
+
+.page {
+  display: none;
+  min-height: 100vh;
+  padding: 28px 17px 45px;
+  text-align: center;
+  animation: appear .6s ease;
+}
+
+.page.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1, h2 {
+  font-family: 'Baloo 2', cursive;
+  line-height: 1.15;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 10vw, 4rem);
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+p {
+  line-height: 1.7;
+}
+
+.eyebrow {
+  color: #7957c9;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.hero {
+  width: 100%;
+  max-width: 520px;
+  margin: auto;
+  padding: 25px 10px;
+}
+
+.cake {
+  font-size: 105px;
+  display: inline-block;
+  animation: bounce 2s infinite;
+  filter: drop-shadow(0 10px 12px #e6a3cb);
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-15px) rotate(3deg); }
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #ff579a, #8b63ed, #36b6c7);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.subtitle {
+  margin: 12px auto 24px;
+  max-width: 350px;
+  color: #695d80;
+}
+
+.main-btn {
+  padding: 14px 27px;
+  border-radius: 50px;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  background: linear-gradient(100deg, #ff70a9, #9475ff);
+  box-shadow: 0 8px 20px #bca1e7;
+  transition: .2s;
+}
+
+.main-btn:active {
+  transform: scale(.95);
+}
+
+.secondary-btn {
+  margin-top: 15px;
+  padding: 11px 22px;
+  border-radius: 30px;
+  background: white;
+  color: #7957c9;
+  font-weight: 700;
+  box-shadow: 0 4px 15px #d8cbea;
+}
+
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  font-size: 22px;
+  animation: floatUp 5s linear infinite;
+  z-index: -1;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(110vh) rotate(0); opacity: 0; }
+  20% { opacity: 1; }
+  to { transform: translateY(-15vh) rotate(360deg); opacity: 0; }
+}
+
+.section-intro {
+  max-width: 390px;
+  color: #756889;
+  margin-bottom: 25px;
+}
+
+.gift-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  width: 100%;
+  max-width: 450px;
+}
+
+.gift {
+  min-height: 145px;
+  border-radius: 25px;
+  background: white;
+  padding: 18px 10px;
+  box-shadow: 0 8px 25px #cdbde8;
+  transition: .2s;
+}
+
+.gift:active {
+  transform: scale(.94);
+}
+
+.gift span {
+  display: block;
+  font-size: 52px;
+  margin-bottom: 7px;
+}
+
+.gift strong {
+  color: #7154ba;
+}
+
+.quiz-card {
+  background: white;
+  padding: 25px 20px;
+  border-radius: 25px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 8px 25px #d5c8e8;
+}
+
+.question {
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.answer {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  border-radius: 15px;
+  background: #f4efff;
+  color: #59477e;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.answer:hover {
+  background: #ffe2ef;
+}
+
+#quizFeedback {
+  margin-top: 17px;
+  font-weight: 700;
+  color: #8b60d5;
+  min-height: 28px;
+}
+
+.gallery {
+  width: 100%;
+  max-width: 470px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.photo-card {
+  background: white;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 6px 20px #d7c9e9;
+  overflow: hidden;
+}
+
+.photo-card img {
+  width: 100%;
+  height: 145px;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+}
+
+.photo-placeholder {
+  height: 145px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ffd8e9, #dcd1ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 45px;
+}
+
+.photo-card p {
+  font-weight: 700;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.surprise-card {
+  background: white;
+  border-radius: 25px;
+  padding: 30px 20px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 8px 25px #d5c8e8;
+  margin: 15px 0;
+}
+
+.surprise-emoji {
+  font-size: 65px;
+  margin-bottom: 15px;
+}
+
+.final-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 28px 20px;
+  background: white;
+  border-radius: 30px;
+  box-shadow: 0 10px 35px #cbb9e8;
+  margin: auto;
+}
+
+.final-card p {
+  margin: 16px 0;
+}
+
+.footer {
+  margin-top: 35px;
+  color: #8b7b9d;
+  font-size: 12px;
+}
+
+.nav-dots {
+  margin: 20px 0;
+  display: flex;
+  gap: 7px;
+}
+
+.nav-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d6c9ee;
+}
+
+.nav-dots span.active {
+  background: #9475ff;
+}
+
+#confettiCanvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@media(max-width: 360px) {
+  .gift-grid { gap: 9px; }
+  .gift { min-height: 130px; }
+  .photo-card img, .photo-placeholder { height: 115px; }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="confettiCanvas"></canvas>
+
+<!-- WELCOME PAGE -->
+<section class="page active" id="welcome">
+  <div class="hero">
+    <div class="eyebrow">A little world made just for you</div>
+    <div class="cake">🎂</div>
+    <h1 class="gradient-text">Happy Birthday<br>Amulu!</h1>
+    <p class="subtitle">
+      Someone very special deserves a day full of happiness,
+      laughter and surprises. Are you ready?
+    </p>
+    <button class="main-btn" onclick="goTo('gifts')">
+      Open Your Surprise ✨
+    </button>
+    <div class="footer">Made with lots of cousin love 💗</div>
+  </div>
+</section>
+
+<!-- GIFTS PAGE -->
+<section class="page" id="gifts">
+  <div class="eyebrow">Surprise number one</div>
+  <h2>Pick a Gift! 🎁</h2>
+  <p class="section-intro">
+    Four little gifts are waiting for you. Tap each one!
+  </p>
+
+  <div class="gift-grid">
+    <button class="gift" onclick="openGift(0)">
+      <span>🎁</span><strong>Gift One</strong>
+    </button>
+    <button class="gift" onclick="openGift(1)">
+      <span>💝</span><strong>Gift Two</strong>
+    </button>
+    <button class="gift" onclick="openGift(2)">
+      <span>🎀</span><strong>Gift Three</strong>
+    </button>
+    <button class="gift" onclick="openGift(3)">
+      <span>🎊</span><strong>Gift Four</strong>
+    </button>
+  </div>
+
+  <div class="surprise-card" id="giftMessage" style="display:none">
+    <div class="surprise-emoji" id="giftEmoji">💗</div>
+    <p id="giftText"></p>
+  </div>
+
+  <button class="secondary-btn" onclick="goTo('quiz')">
+    Next Surprise →
+  </button>
+</section>
+
+<!-- QUIZ PAGE -->
+<section class="page" id="quiz">
+  <div class="eyebrow">Let's test your cousin knowledge</div>
+  <h2>The Amulu Quiz 😂</h2>
+  <p class="section-intro">
+    Let's see how well you know yourself!
+  </p>
+
+  <div class="quiz-card">
+    <div class="question" id="question">Loading question...</div>
+    <div id="answers"></div>
+    <div id="quizFeedback"></div>
+    <button class="secondary-btn" id="nextQuestion"
+      onclick="nextQuiz()" style="display:none">
+      Next Question →
+    </button>
+  </div>
+
+  <button class="secondary-btn" onclick="goTo('gallery')">
+    Skip Quiz →
+  </button>
+</section>
+
+<!-- GALLERY PAGE -->
+<section class="page" id="gallery">
+  <div class="eyebrow">Little moments, big memories</div>
+  <h2>Our Memory Corner 📸</h2>
+  <p class="section-intro">
+    A few spaces waiting for your favourite memories together.
+  </p>
+
+  <div class="gallery">
+    <div class="photo-card">
+      <div class="photo-placeholder">📷</div>
+      <p>Memory One 💗</p>
+    </div>
+    <div class="photo-card">
+      <div class="photo-placeholder">🌸</div>
+      <p>Memory Two ✨</p>
+    </div>
+    <div class="photo-card">
+      <div class="photo-placeholder">🥰</div>
+      <p>Memory Three 🎀</p>
+    </div>
+    <div class="photo-card">
+      <div class="photo-placeholder">🎉</div>
+      <p>Memory Four 💕</p>
+    </div>
+  </div>
+
+  <button class="secondary-btn" onclick="goTo('random')">
+    One More Surprise →
+  </button>
+</section>
+
+<!-- RANDOM SURPRISE PAGE -->
+<section class="page" id="random">
+  <div class="eyebrow">A little something unexpected</div>
+  <h2>Magic Surprise ✨</h2>
+  <p class="section-intro">
+    Tap the button. Let's see what birthday magic appears!
+  </p>
+
+  <div class="surprise-card">
+    <div class="surprise-emoji" id="randomEmoji">🌟</div>
+    <p id="randomText">
+      Your surprise is waiting...
+    </p>
+  </div>
+
+  <button class="main-btn" onclick="randomSurprise()">
+    Reveal Surprise 🎁
+  </button>
+
+  <button class="secondary-btn" onclick="goTo('final')">
+    Finish the Adventure →
+  </button>
+</section>
+
+<!-- FINAL PAGE -->
+<section class="page" id="final">
+  <div class="final-card">
+    <div class="cake">🎂</div>
+    <div class="eyebrow">Today is all about you</div>
+    <h1 class="gradient-text">Happy Birthday, Amulu!</h1>
+
+    <p>
+      Wishing you a life filled with happiness, laughter,
+      exciting adventures and beautiful memories.
+    </p>
+
+    <p>
+      Keep being your wonderful self. May this new year
+      bring you countless reasons to smile.
+    </p>
+
+    <h2>Lots of love! 💗</h2>
+
+    <button class="main-btn" onclick="celebrate()">
+      Celebrate Again! 🎉
+    </button>
+  </div>
+</section>
+
+<script>
+/* PAGE NAVIGATION */
+function goTo(pageId) {
+  document.querySelectorAll('.page').forEach(page => {
+    page.classList.remove('active');
+  });
+
+  document.getElementById(pageId).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  if (pageId === 'final') {
+    celebrate();
+  }
+}
+
+/* GIFT SURPRISES */
+const gifts = [
+  {
+    emoji: "💗",
+    text: "Your first gift is a reminder that you are truly special. Never forget how much happiness you bring to the people around you!"
+  },
+  {
+    emoji: "😂",
+    text: "Your second gift is unlimited permission to be silly, laugh loudly and enjoy every little moment!"
+  },
+  {
+    emoji: "🌈",
+    text: "Your third gift is a wish: may every dream you have find its way into your life!"
+  },
+  {
+    emoji: "👑",
+    text: "Your final gift is a crown! Because today, the birthday queen deserves all the attention!"
+  }
+];
+
+function openGift(index) {
+  document.getElementById('giftEmoji').textContent = gifts[index].emoji;
+  document.getElementById('giftText').textContent = gifts[index].text;
+  document.getElementById('giftMessage').style.display = 'block';
+}
+
+/* QUIZ */
+const questions = [
+  {
+    q: "What is the most important thing on a birthday?",
+    a: ["Cake! 🎂", "Gifts! 🎁", "Both, obviously! 😂"],
+    correct: 2,
+    feedback: "Correct! Why choose when you can have both? 😂"
+  },
+  {
+    q: "What should Amulu receive today?",
+    a: ["Lots of happiness 💗", "Unlimited chocolates 🍫", "Everything wonderful! 🌈"],
+    correct: 2,
+    feedback: "Exactly! She deserves all the good things!"
+  },
+  {
+    q: "What is the best birthday activity?",
+    a: ["Laughing with family 😂", "Eating cake 🎂", "Making memories 📸"],
+    correct: 0,
+    feedback: "A day full of laughter is always special!"
+  }
+];
+
+let quizIndex = 0;
+
+function showQuiz() {
+  const q = questions[quizIndex];
+  document.getElementById('question').textContent = q.q;
+  document.getElementById('quizFeedback').textContent = "";
+  document.getElementById('nextQuestion').style.display = "none";
+
+  const answers = document.getElementById('answers');
+  answers.innerHTML = "";
+
+  q.a.forEach((answer, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer';
+    btn.textContent = answer;
+    btn.onclick = () => chooseAnswer(i);
+    answers.appendChild(btn);
+  });
+}
+
+function chooseAnswer(index) {
+  const q = questions[quizIndex];
+  const feedback = document.getElementById('quizFeedback');
+
+  if (index === q.correct) {
+    feedback.textContent = q.feedback;
+  } else {
+    feedback.textContent = "Nice try! 😂 There's no wrong way to enjoy a birthday!";
+  }
+
+  document.querySelectorAll('.answer').forEach(btn => {
+    btn.disabled = true;
+    btn.style.opacity = ".7";
+  });
+
+  document.getElementById('nextQuestion').style.display = "inline-block";
+}
+
+function nextQuiz() {
+  quizIndex++;
+
+  if (quizIndex >= questions.length) {
+    document.getElementById('question').textContent =
+      "Quiz completed! You are officially today's birthday star! 🌟";
+    document.getElementById('answers').innerHTML = "";
+    document.getElementById('quizFeedback').textContent =
+      "Time for some memories!";
+    document.getElementById('nextQuestion').style.display = "none";
+    return;
+  }
+
+  showQuiz();
+}
+
+showQuiz();
+
+/* RANDOM SURPRISES */
+const surprises = [
+  ["🌸", "May your days be as beautiful as flowers in spring!"],
+  ["🍫", "Sending you an imaginary mountain of chocolates!"],
+  ["🦋", "May you always have the freedom to chase your dreams!"],
+  ["🌟", "Never stop shining. The world needs your sparkle!"],
+  ["🎈", "Here's a balloon full of happiness just for you!"],
+  ["💖", "A little reminder: you make life more joyful for your family!"]
+];
+
+function randomSurprise() {
+  const item = surprises[Math.floor(Math.random() * surprises.length)];
+  document.getElementById('randomEmoji').textContent = item[0];
+  document.getElementById('randomText').textContent = item[1];
+}
+
+/* BACKGROUND FLOATING DECORATIONS */
+const decorations = ["✨", "💗", "🌸", "⭐", "🎀"];
+
+for (let i = 0; i < 12; i++) {
+  const el = document.createElement('div');
+  el.className = 'sparkle';
+  el.textContent = decorations[i % decorations.length];
+  el.style.left = Math.random() * 100 + 'vw';
+  el.style.animationDelay = Math.random() * 5 + 's';
+  el.style.animationDuration = (5 + Math.random() * 5) + 's';
+  document.body.appendChild(el);
+}
+
+/* CONFETTI CELEBRATION */
+const canvas = document.getElementById('confettiCanvas');
+const ctx = canvas.getContext('2d');
+let confetti = [];
+let confettiFrame = null;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+function celebrate() {
+  if (confettiFrame) cancelAnimationFrame(confettiFrame);
+
+  confetti = [];
+
+  for (let i = 0; i < 130; i++) {
+    confetti.push({
+      x: Math.random() * canvas.width,
+      y: -Math.random() * canvas.height,
+      size: 4 + Math.random() * 7,
+      speed: 2 + Math.random() * 4,
+      drift: Math.random() * 2 - 1,
+      hue: Math.random() * 360
+    });
+  }
+
+  let frames = 0;
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    confetti.forEach(c => {
+      ctx.fillStyle = `hsl(${c.hue}, 90%, 65%)`;
+      ctx.fillRect(c.x, c.y, c.size, c.size);
+      c.y += c.speed;
+      c.x += c.drift;
+
+      if (c.y > canvas.height) {
+        c.y = -10;
+        c.x = Math.random() * canvas.width;
+      }
+    });
+
+    frames++;
+
+    if (frames < 240) {
+      confettiFrame = requestAnimationFrame(draw);
+    } else {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      confettiFrame = null;
+    }
+  }
+
+  draw();
+}
+</script>
+
+</body>
+</html>
